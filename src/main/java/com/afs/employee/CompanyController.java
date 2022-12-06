@@ -1,9 +1,6 @@
 package com.afs.employee;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,11 @@ public class CompanyController {
     @GetMapping("/{id}/employees")
     List<Employee> getEmployeeListByCompanyWithID(@PathVariable Integer id) {
         return companyRepository.getEmployeeListByCompanyWithID(id);
+    }
+
+    @GetMapping(params = {"page", "pageSize"})
+    public List<Company> getCompanyListWithPageQuery(@RequestParam Integer page, @RequestParam Integer pageSize) {
+        return companyRepository.getCompanyListWithPageQuery(page, pageSize);
     }
 
 }

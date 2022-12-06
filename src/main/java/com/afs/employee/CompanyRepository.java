@@ -41,4 +41,10 @@ public class CompanyRepository {
     public List<Employee> getEmployeeListByCompanyWithID(Integer id) {
         return getCompanyWithID(id).getEmployeeList();
     }
+
+    public List<Company> getCompanyListWithPageQuery(Integer page, Integer pageSize) {
+        int initial_index = (page - 1) * pageSize;
+        int end_index = initial_index + pageSize;
+        return companyList.subList(initial_index, end_index);
+    }
 }
