@@ -23,7 +23,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    Employee getOneWithID(@PathVariable(required = true)Integer id){
+    Employee getOneWithID(@PathVariable Integer id){
         return employeeRepository.getOneWithID(id);
     }
 
