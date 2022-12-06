@@ -57,4 +57,11 @@ public class EmployeeRepository {
             return null;
         }
     }
+
+    public void delete(Integer id) {
+        this.employeeList = employeeList.stream()
+                .filter(employee -> !(employee.getId().equals(id)))
+                .collect(Collectors.toList());
+        System.out.println(employeeList);
+    }
 }
