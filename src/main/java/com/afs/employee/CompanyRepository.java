@@ -61,4 +61,10 @@ public class CompanyRepository {
         companyList.add(company);
         return company;
     }
+
+    public Company update(Integer id, Company company) {
+        Company selectedCompany= getCompanyWithID(id);
+        selectedCompany.setName(company.getName());
+        return selectedCompany;
+    }
 }

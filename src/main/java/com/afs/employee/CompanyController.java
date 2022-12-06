@@ -39,5 +39,9 @@ public class CompanyController {
         return companyRepository.create(company);
     }
 
+    @PutMapping("/{id}")
+    public Company updateCompany(@PathVariable Integer id, @RequestBody Company company) {
+        return companyRepository.update(id, company);
+    }
 
 }
