@@ -10,3 +10,6 @@ GET /employees?gender=male | Get male employee
 "gender": "Female",
 "salary": 8000
 }
+
+POST /employees | add an employee
+
