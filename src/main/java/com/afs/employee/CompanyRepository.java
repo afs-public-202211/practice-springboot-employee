@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 @Repository
 public class CompanyRepository {
-    List<Company> CompanyList;
+    List<Company> companyList;
 
-    public CompanyRepository(List<Company> CompanyList) {
-        this.CompanyList = CompanyList;
+    public CompanyRepository(List<Company> companyList) {
+        this.companyList = companyList;
 
         List<Employee> employeeList1 = new ArrayList<>();
         List<Employee> employeeList2 = new ArrayList<>();
@@ -22,12 +22,19 @@ public class CompanyRepository {
         employeeList1.add(new Employee(5, "Leo2", 1329, "Male", 60300));
         employeeList2.add(new Employee(6, "Leo3", 139, "Male", 60050));
 
-        this.CompanyList.add(new Company(1, "Google", employeeList1));
-        this.CompanyList.add(new Company(2, "Amazon", employeeList2));
+        this.companyList.add(new Company(1, "Google", employeeList1));
+        this.companyList.add(new Company(2, "Amazon", employeeList2));
 
     }
 
     public List<Company> getAll() {
-        return CompanyList;
+        return companyList;
+    }
+
+    public Company getCompanyWithID(Integer id) {
+        return companyList.stream()
+                .filter(company -> company.getId().equals(id))
+                .findFirst()
+                .get();
     }
 }
