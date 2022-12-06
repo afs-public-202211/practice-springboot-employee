@@ -32,18 +32,29 @@ public class EmployeeRepository {
         return employeeList.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
     }
 
-    public Employee create(Employee employee){
+    public Employee create(Employee employee) {
         Integer id = generateNextId();
         employee.setId(id);
         employeeList.add(employee);
         return employee;
     }
 
-    private Integer generateNextId(){
+    private Integer generateNextId() {
         int nextId = employeeList.stream()
-                .mapToInt(employee->employee.getId())
+                .mapToInt(employee -> employee.getId())
                 .max()
                 .orElse(1);
-        return nextId+1;
+        return nextId + 1;
+    }
+
+    public Employee update(Integer id, Employee employee) {
+        try {
+            Employee selectedEmployee = getOneWithID(id);
+            selectedEmployee.setAge(employee.getAge());
+            selectedEmployee.setSalary(employee.getSalary());
+            return selectedEmployee;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
