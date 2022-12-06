@@ -22,7 +22,7 @@ public class EmployeeRepository {
 
     public Employee getOneWithID(Integer id) {
         return employeeList.stream()
-                .filter(employee -> employee.getId() == id)
+                .filter(employee -> employee.getId().equals(id))
                 .findFirst()
                 .orElseThrow(NoEmployeeFoundException::new);
     }
