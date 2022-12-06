@@ -13,7 +13,10 @@ public class EmployeeRepository {
         this.employeeList = employeeList;
         this.employeeList.add(new Employee(1, "Lily", 20, "Female", 8000));
         this.employeeList.add(new Employee(2, "Lucy", 21, "Female", 7000));
-        this.employeeList.add(new Employee(3, "Leo", 19, "Male", 6000));
+        this.employeeList.add(new Employee(3, "Leo", 19, "Male", 60100));
+        this.employeeList.add(new Employee(4, "Leo1", 129, "Male", 62000));
+        this.employeeList.add(new Employee(5, "Leo2", 1329, "Male", 60300));
+        this.employeeList.add(new Employee(6, "Leo3", 139, "Male", 60050));
     }
 
     public List<Employee> getAll() {
@@ -63,5 +66,11 @@ public class EmployeeRepository {
                 .filter(employee -> !(employee.getId().equals(id)))
                 .collect(Collectors.toList());
         System.out.println(employeeList);
+    }
+
+    public List<Employee> getEmployeeListWithID(Integer page, Integer pageSize) {
+        Integer initial_index = (page - 1) * pageSize;
+        Integer end_index = initial_index + pageSize;
+        return employeeList.subList(initial_index, end_index);
     }
 }
