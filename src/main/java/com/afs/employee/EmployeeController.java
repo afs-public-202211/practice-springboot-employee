@@ -1,8 +1,6 @@
 package com.afs.employee;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,10 @@ public class EmployeeController {
     @GetMapping
     List<Employee> getAll() {
         return employeeRepository.getAll();
+    }
+
+    @GetMapping("/{id}")
+    Employee getOneWithID(@PathVariable(required = true)Integer id){
+        return employeeRepository.getOneWithID(id);
     }
 }

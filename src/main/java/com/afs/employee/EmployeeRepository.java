@@ -18,4 +18,11 @@ public class EmployeeRepository {
     public List<Employee> getAll() {
         return employeeList;
     }
+
+    public Employee getOneWithID(Integer id) {
+        return employeeList.stream()
+                .filter(employee -> employee.getId() == id)
+                .findFirst()
+                .get();
+    }
 }
