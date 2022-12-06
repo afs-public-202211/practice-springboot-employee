@@ -3,6 +3,7 @@ package com.afs.employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class EmployeeRepository {
@@ -24,5 +25,10 @@ public class EmployeeRepository {
                 .filter(employee -> employee.getId() == id)
                 .findFirst()
                 .get();
+    }
+
+    public List<Employee> getEmployeeByGender(String gender) {
+        System.out.println(gender);
+        return employeeList.stream().filter(employee -> employee.getGender().equals(gender)).collect(Collectors.toList());
     }
 }
