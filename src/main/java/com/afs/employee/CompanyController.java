@@ -43,5 +43,10 @@ public class CompanyController {
     public Company updateCompany(@PathVariable Integer id, @RequestBody Company company) {
         return companyRepository.update(id, company);
     }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCompanyById(@PathVariable Integer id) {
+        companyRepository.delete(id);
+    }
 
 }

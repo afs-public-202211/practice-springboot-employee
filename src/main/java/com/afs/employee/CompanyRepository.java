@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 public class CompanyRepository {
     List<Company> companyList;
@@ -66,5 +68,11 @@ public class CompanyRepository {
         Company selectedCompany= getCompanyWithID(id);
         selectedCompany.setName(company.getName());
         return selectedCompany;
+    }
+
+    public void delete(Integer id) {
+        this.companyList = companyList.stream()
+                .filter(employee -> !(employee.getId().equals(id)))
+                .collect(Collectors.toList());
     }
 }
