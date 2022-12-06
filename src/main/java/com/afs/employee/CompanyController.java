@@ -1,5 +1,6 @@
 package com.afs.employee;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,5 +33,11 @@ public class CompanyController {
     public List<Company> getCompanyListWithPageQuery(@RequestParam Integer page, @RequestParam Integer pageSize) {
         return companyRepository.getCompanyListWithPageQuery(page, pageSize);
     }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Company addCompany(@RequestBody Company company) {
+        return companyRepository.create(company);
+    }
+
 
 }

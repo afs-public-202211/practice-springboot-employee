@@ -47,4 +47,18 @@ public class CompanyRepository {
         int end_index = initial_index + pageSize;
         return companyList.subList(initial_index, end_index);
     }
+
+    private Integer generateNextId() {
+        int nextId = companyList.stream()
+                .mapToInt(Company::getId)
+                .max()
+                .orElse(1);
+        return nextId + 1;
+    }
+    public Company create(Company company) {
+        Integer id = generateNextId();
+        company.setId(id);
+        companyList.add(company);
+        return company;
+    }
 }
