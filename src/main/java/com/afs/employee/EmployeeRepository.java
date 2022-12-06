@@ -24,7 +24,7 @@ public class EmployeeRepository {
         return employeeList.stream()
                 .filter(employee -> employee.getId() == id)
                 .findFirst()
-                .get();
+                .orElseThrow(NoEmployeeFoundException::new);
     }
 
     public List<Employee> getEmployeeByGender(String gender) {
