@@ -13,3 +13,9 @@ GET /employees?gender=male | Get male employee
 
 POST /employees | add an employee
 
+
+PUT /employees | update an employee
+
+DELETE /employees | delete an employee
+
+GET /employees?page=1&pageSize=5 | page query, page equals 1, page size equal 5
