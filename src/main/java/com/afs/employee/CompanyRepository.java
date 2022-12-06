@@ -37,4 +37,8 @@ public class CompanyRepository {
                 .findFirst()
                 .get();
     }
+
+    public List<Employee> getEmployeeListByCompanyWithID(Integer id) {
+        return getCompanyWithID(id).getEmployeeList();
+    }
 }
