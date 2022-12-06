@@ -44,7 +44,7 @@ public class EmployeeRepository {
 
     private Integer generateNextId() {
         int nextId = employeeList.stream()
-                .mapToInt(employee -> employee.getId())
+                .mapToInt(Employee::getId)
                 .max()
                 .orElse(1);
         return nextId + 1;
@@ -69,8 +69,8 @@ public class EmployeeRepository {
     }
 
     public List<Employee> getEmployeeListWithID(Integer page, Integer pageSize) {
-        Integer initial_index = (page - 1) * pageSize;
-        Integer end_index = initial_index + pageSize;
+        int initial_index = (page - 1) * pageSize;
+        int end_index = initial_index + pageSize;
         return employeeList.subList(initial_index, end_index);
     }
 }
